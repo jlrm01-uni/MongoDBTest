@@ -36,5 +36,20 @@ Creature.drop_collection()
 Ability.drop_collection()
 
 # Your code goes here
+a = Ability(name="Test")
+a.save()
+
+c = Creature(name="jdfkasdjs;", hp=3920, image="11")
+
+a.save()
+c.ability = a
+c.save()
+
+a = Ability()
+c = Creature(name="jdfkasdjs;", hp=3920, image="11", description="dfs")
+
+a.save()
+c.ability = a
+c.save()
 
 pass
