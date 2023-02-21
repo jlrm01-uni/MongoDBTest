@@ -36,17 +36,17 @@ Creature.drop_collection()
 Ability.drop_collection()
 
 # Your code goes here
-a = Ability(name="Test")
-a.save()
-
-c = Creature(name="jdfkasdjs;", hp=3920, image="11")
+a = Ability(name="Best Ability")
+c = Creature(name="Pepe", hp=50, image="11", description="A thing.",
+             attack=10, defense=10, speed=1)
 
 a.save()
 c.ability = a
 c.save()
 
-a = Ability()
-c = Creature(name="jdfkasdjs;", hp=3920, image="11", description="dfs")
+a = Ability(name="Second Best Ability, but still good")
+c = Creature(name="Bill", hp=50, image="35", description="Another thing.",
+             attack=10, defense=10, speed=1)
 
 a.save()
 c.ability = a
