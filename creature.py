@@ -1,4 +1,7 @@
+from random import randint, sample
+
 from mongoengine import *
+from filler_creatures import creatures, abilities
 
 
 class Ability(Document):
@@ -51,5 +54,39 @@ c = Creature(name="Bill", hp=50, image="35", description="Another thing.",
 a.save()
 c.ability = a
 c.save()
+
+# Generating filler creatures
+
+# find already used images
+pics_already_used = Creature.objects().distinct("image")
+
+all_pics = [str(n) for n in range(1, 829)]
+
+unused_pics = list(set(all_pics).difference(pics_already_used))
+
+for each_filler_creature, each_ability in zip(creatures, abilities):
+    creature_name = each_filler_creature
+    ability_name = each_ability
+
+    creature_description = creatures[creature_name]["description"]
+    creature_lore = creatures[creature_name]["lore"]
+    ability_description = abilities[ability_name]
+
+    hp = randint(1, 100)
+    attack = randint(1, 100)
+    defense = randint(1, 100)
+    speed = randint(1, 100)
+    image = sample(unused_pics, 1)[0]
+
+    c = Creature(name=creature_name, description=creature_description,
+                 hp=hp, attack=attack, defense=defense, speed=speed,
+                 lore=creature_lore, image=image)
+    a = Ability(name=ability_name, description=ability_description)
+
+    a.save()
+    c.ability = a
+    c.save()
+
+    pass
 
 pass
