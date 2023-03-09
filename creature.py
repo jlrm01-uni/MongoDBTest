@@ -33,7 +33,7 @@ class Creature(Document):
         return f"<Creature {self.name} - Atk {self.attack}: {ability_name}>"
 
 
-connect("Creatures")
+connect(host="mongodb+srv://creatureDen:samusfan123@cluster0.irk6d.mongodb.net/creatureDen")
 
 Creature.drop_collection()
 Ability.drop_collection()
