@@ -6,6 +6,7 @@ from filler_creatures import creatures, abilities
 
 logging.basicConfig(level=logging.DEBUG)
 
+# Ojalá my internet fuera así
 
 class Ability(Document):
     name = StringField(required=True, unique=True)
