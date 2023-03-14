@@ -10,10 +10,13 @@
 
   <div class="d-flex flex-row flex-wrap">
       {% for each_creature in all_creatures %}
-        <figure>
-            <img class="img-fluid figure-img" src="/static/creature%20({{ each_creature.image }}).png" alt="Not a pokemon">
-            <figcaption class="figure-caption text-center text-truncate">{{ each_creature.name }}</figcaption>
-        </figure>
+          <a href="/creature?name={{ each_creature.name | urlencode }}">
+              <figure>
+                  <img class="img-fluid figure-img" src="/static/creature%20({{ each_creature.image }}).png"
+                       alt="Not a pokemon">
+                  <figcaption class="figure-caption text-center text-truncate">{{ each_creature.name }}</figcaption>
+              </figure>
+          </a>
       {% endfor %}
   </div>
 

@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from creature import Creature, Ability
 
 app = Flask(__name__)
@@ -19,7 +19,8 @@ def den():
 
 @app.route("/creature")
 def creature():
-    return render_template("creature.html")
+    name = request.args.get("name")
+    return render_template("creature.html", name=name)
 
 
 if __name__ == '__main__':

@@ -1,7 +1,10 @@
+import os
 from random import randint, sample
-
+import logging
 from mongoengine import *
 from filler_creatures import creatures, abilities
+
+logging.basicConfig(level=logging.DEBUG)
 
 
 class Ability(Document):
@@ -33,7 +36,12 @@ class Creature(Document):
         return f"<Creature {self.name} - Atk {self.attack}: {ability_name}>"
 
 
-connect(host="mongodb+srv://creatureDen:samusfan123@cluster0.irk6d.mongodb.net/creatureDen")
+if os.getenv("USE_LOCAL"):
+    connect("Creatures")
+    logging.debug("Running on local database.")
+else:
+    connect(host=os.getenv("CREATURE_DEN_DATABASE_URL"))
+    logging.debug("Running on the cloud.")
 
 Creature.drop_collection()
 Ability.drop_collection()
