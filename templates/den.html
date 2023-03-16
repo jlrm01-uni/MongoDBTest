@@ -8,6 +8,8 @@
   </head>
   <body>
 
+  {% include "navigation.html" %}
+
   <div class="d-flex flex-row flex-wrap">
       {% for each_creature in all_creatures %}
           <a href="/creature?name={{ each_creature.name | urlencode }}">
