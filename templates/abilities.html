@@ -12,7 +12,9 @@
 
     <div class="container d-flex flex-column ">
         {% for ability in all_abilities %}
-            <h4> {{ ability.name }} - {{ ability.description }}</h4>
+            <a href="/ability?name={{ ability.name | urlencode }}" style="text-decoration: none">
+                <h4> {{ ability.name }} - {{ ability.description }}</h4>
+            </a>
         {% endfor %}
     </div>
 

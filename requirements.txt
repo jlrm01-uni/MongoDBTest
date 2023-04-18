@@ -1,2 +1,3 @@
 Flask~=2.2.3
 mongoengine~=0.26.0
+Flask-Discord~=0.1.64
